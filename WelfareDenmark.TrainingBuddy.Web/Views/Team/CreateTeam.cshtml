@@ -6,7 +6,6 @@
 <h2>CreateTeam</h2>
 
 
-
 <div class="row">
     <div class="col-md-3">
         <div class="list-group">
@@ -22,24 +21,38 @@
             <header>Valgte Deltagere</header>
         </div>
     </div>
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Øvelses Sæt
+    <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Øvelses Sæt<span class="caret"></span>
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Sæt 1</a>
-            <a class="dropdown-item" href="#">Sæt 2</a>
-            <a class="dropdown-item" href="#">Lav dit eget...</a>
-        </div>
+        <ul class="dropdown-menu">
+            <li><a href="#">Sæt 1</a></li>
+            <li><a href="#">Sæt 2</a></li>
+            <li><a href="#">Lav dit eget...</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
     </div>
-    <div class="dropdown">
+    <div class="btn-group">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Dropdown button
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Dato</a>
+            <a class="dropdown-item" href="#">En anden dato</a>
+            <a class="dropdown-item" href="#">Hvorfor ikke bare den her dato istedet?</a>
         </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-10">
+
+    </div>
+    <div class="btn-group">
+        <button class="btn btn-primary btn-lg btn-link btn-block" type="button" id="btnCreateTeam" >
+
+        Opret Hold
+        </button>
     </div>
 </div>
