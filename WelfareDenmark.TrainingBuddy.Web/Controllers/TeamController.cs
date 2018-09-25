@@ -8,7 +8,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
 {
     public class TeamController : Controller
     {
-        public IActionResult Index()
+        public IActionResult CreateTeam()
         {
             return View();
         }
