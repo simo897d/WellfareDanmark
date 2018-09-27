@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-3">
         <div class="list-group">
-            <a href="#" class="list-group-item">Gerda Larsen</a>
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#friendList">Gerda Larsen</a>
             <a href="#" class="list-group-item">Karsten Olsen</a>
             <a href="#" class="list-group-item">Kim Nielsen</a>
             <a href="#" class="list-group-item">Morten Pedersen</a>
@@ -55,11 +55,41 @@
         </ul>
         <div class="row">
             <div class="col-md-6">
-                @Html.ActionLink("Opret hold","CreateTeam","Team", null, new { @class="btn btn-default", @style="width:100%;" })
+                @Html.ActionLink("Opret hold", "CreateTeam", "Team", null, new { @class = "btn btn-default", @style = "width:100%;" })
             </div>
             <div class="col-md-6">
                 <button type="button" style="width: 100%;" class="btn btn-default">Button</button>
             </div>
         </div>
     </div>
+
 </div>
+
+
+    <div class="modal" id="friendList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Gerda Larsen</h5>
+                </div>
+                <div class="modal-body">
+                    Lidt information om Gerda skulle kunne ses her
+                </div>
+                <div class="modal-body">
+
+                    <div class="btn-group col-md-12">
+                        <button type="submit" class="btn btn-success btn-lg btn-block">Ring op</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+
+                    <div class="btn-group col-md-12">
+                        <button type="submit" class="btn btn-secondary btn-lg btn-block">Luk vindue</button>
+                    </div>
+                </div>
+                <span aria-hidden="true"></span>
+            </div>
+        </div>
+    </div>
+
+
