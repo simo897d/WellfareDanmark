@@ -8,18 +8,35 @@
 
 <div class="row">
     <div class="col-md-3">
-        <div class="list-group">
-            <a href="#" class="list-group-item">Gerda Larsen</a>
+        <div class="dual-list list-left"id="friendsList">
+            <div class="well text-right">
+                <div class="row">
+                    
+            <a href="#" class="list-group-item list-group-item-action">Gerda Larsen</a>
             <a href="#" class="list-group-item">Karsten Olsen</a>
             <a href="#" class="list-group-item">Kim Nielsen</a>
             <a href="#" class="list-group-item">Morten Pedersen</a>
             <a href="#" class="list-group-item">Hanne Holm</a>
+                    <button class="btn btn-default btn-sm move-right">Karsten Otterup<span class="glyphicon glyphicon-chevron-right"></span></button>
+                </div>
         </div>
+            </div>
     </div>
     <div class="col-md-3">
-        <div class="list-group">
-            <header>Valgte Deltagere</header>
+        <div class="dual-list list-right">
+            <div class="well">
+                <div class="row">
+                    <ul class="list-group">
+                        <li class="list-group-item"></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        @*<div class="list-group" id="participantsList">
+            <header>Valgte Deltagere</header>
+            <div class="list-group-item" data="friendsList">
+            </div>
+        </div>*@
     </div>
     <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
