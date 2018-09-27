@@ -48,10 +48,12 @@
                     <input type="password" name="pass" placeholder="kodeord">
                     <input type="submit" name="login" class="login loginmodal-submit" value="Log ind">
                 </form>
-
-                <div class="login-help">
-                    <a href="#">Registrer bruger</a> - <a href="#">Glemt kodeord</a>
-                </div>
+                <ul class="Login-help">
+                    <li><a asp-area="" asp-controller="User" asp-action="CreateUser">Registrer bruger</a></li>
+                </ul>
+                @*<div class="login-help">
+            <a href="#">Registrer bruger</a> - <a href="#">Glemt kodeord</a>
+        </div>*@
             </div>
         </div>
     </div>
