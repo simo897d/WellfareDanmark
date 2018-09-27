@@ -4,8 +4,9 @@
 
 <div class="row">
     <div class="col-md-3">
-        <div class="list-group">
-            <a href="#" class="list-group-item" data-toggle="modal" data-target="#friendList">Gerda Larsen</a>
+        <div class="list-group" data-toggle="modal" data-target="#friendList">
+            <h1>Venneliste</h1>
+            <a href="#" class="list-group-item">Gerda Larsen</a>
             <a href="#" class="list-group-item">Karsten Olsen</a>
             <a href="#" class="list-group-item">Kim Nielsen</a>
             <a href="#" class="list-group-item">Morten Pedersen</a>
@@ -65,28 +66,27 @@
 
 </div>
 
-
-    <div class="modal" id="friendList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Gerda Larsen</h5>
-                </div>
-                <div class="modal-body">
-                    Lidt information om Gerda skulle kunne ses her
-                </div>
-                <div class="modal-footer">
-
-                    <div class="btn">
-                        <button type="submit" class="btn btn-success btn-lg ">Ring op</button>
-                    </div>
-                    <div class="btn">
-                        <button type="submit" class="btn btn-secondary btn-lg" data-dismiss="modal">Luk vindue</button>
-                    </div>
-                    </div>
-                <span aria-hidden="true"></span>
+@*Valgt ven modal*@
+<div class="modal" id="friendList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Vens navn</h5>
             </div>
+            <div class="modal-body">
+                Lidt information om vennen skulle kunne ses her
+            </div>
+            <div class="modal-footer">
+
+                <div class="btn">
+                    <button type="submit" class="btn btn-success btn-lg ">Ring op</button>
+                    <button type="submit" class="btn btn-secondary btn-lg" data-dismiss="modal">Luk vindue</button>
+                </div>
+            </div>
+            <span aria-hidden="true"></span>
         </div>
     </div>
+</div>
+@*Valgt ven modal*@
 
 
