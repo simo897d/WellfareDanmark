@@ -14,12 +14,6 @@ using Microsoft.Extensions.DependencyInjection;
 using WelfareDenmark.TrainingBuddy.Web.Models;
 
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using WelfareDenmark.TrainingBuddy.Web.Models;
-
-
 namespace WelfareDenmark.TrainingBuddy.Web
 {
     public class Startup
@@ -43,13 +37,9 @@ namespace WelfareDenmark.TrainingBuddy.Web
 
             services.AddDbContext<TrainingBuddyDataContext>(options =>
             {
-
-                //var connectionString = "server=localhost;database=db_name;userid=root;password=root;";
-
                 var connectionString = "Server=EALSQL1.eal.local;Database=DB2017_C02;User Id=USER_C02;Password=SesamLukOp_02;";
 
                 options.UseSqlServer(connectionString);
-
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
