@@ -35,12 +35,11 @@ namespace WelfareDenmark.TrainingBuddy.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<TrainingBuddyDataContext>(options =>
-            {
-                var connectionString = "Server=EALSQL1.eal.local;Database=DB2017_C02;User Id=USER_C02;Password=SesamLukOp_02;";
-
-                options.UseSqlServer(connectionString);
-            });
+            //services.AddDbContext<TrainingBuddyDataContext>(options =>
+            //{
+            //    var connectionString = "Server=myServerAddress;Database=myDataBase;Trusted_Connection=True;";
+            //    options.UseSqlServer(connectionString);
+            //});
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
