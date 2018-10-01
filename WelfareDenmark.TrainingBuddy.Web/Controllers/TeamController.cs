@@ -21,7 +21,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
             User testUser1 = new User
             {
                 Name = "Gerda Jørgensen",
-                Username = "SlutyBitch02",
+                UserName = "SlutyBitch02",
                 Password = "HeyYo"
             };
 
