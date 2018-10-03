@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.EntityFrameworkCore;
@@ -35,14 +37,22 @@ namespace WelfareDenmark.TrainingBuddy.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<TrainingBuddyDataContext>(options =>
-            {
-                var connectionString = "Server=EALSQL1.eal.local;Database=DB2017_C02;User Id=USER_C02;Password=SesamLukOp_02;";
-
-                options.UseSqlServer(connectionString);
-            });
+            //services.AddDbContext<TrainingBuddyDataContext>(options =>
+            //{
+            //    var connectionString = "Server=myServerAddress;Database=myDataBase;Trusted_Connection=True;";
+            //    options.UseSqlServer(connectionString);
+            //});
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<IdentityDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MyDataBase"),
+                    optionsBuilders =>
+                        optionsBuilders.MigrationsAssembly("WelfareDenmark.TrainingBuddy.Web")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<IdentityDbContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +71,8 @@ namespace WelfareDenmark.TrainingBuddy.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {

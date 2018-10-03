@@ -1,5 +1,8 @@
-﻿@{
-    ViewData["Title"] = "CreateUser";
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model WelfareDenmark.TrainingBuddy.Web.Models.User
+@{
+    ViewData["Title"] = "Register";
+    //Layout = "_ContentLayout";
 }
 
 <h2>Opret bruger</h2>
@@ -29,9 +32,9 @@
                 </div>
             </div>
             <div class="main-login main-center">
-                <form class="form-horizontal" method="post" action="#">
-
-                    <div class="form-group">
+                <form asp-controller="User" asp-action="CreateUser" class="form-horizontal" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    @*<div class="form-group">
                         <label for="usertype" class="cols-sm-2 control-label">Bruger type</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -50,54 +53,54 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">Fornavn og efternavn</label>
+                        <label asp-for="Name" class="cols-sm-2 control-label">Fornavn og efternavn</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Skriv dit navn her" />
+                                <span asp-validation-for="Name" class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" asp-for="Name" placeholder="Skriv dit navn her" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="cols-sm-2 control-label">Email</label>
+                        <label asp-for="Email" class="cols-sm-2 control-label">Email</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="email" id="email" placeholder="Skriv din email her" />
+                                <span asp-validation-for="Email" class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="email" class="form-control" name="email" asp-for="Email" placeholder="Skriv din email her" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label">Brugernavn</label>
+                        <label asp-for="UserName" class="cols-sm-2 control-label">Brugernavn</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="username" id="username" placeholder="Skriv dit brugernavn her" />
+                                <span asp-validation-for="UserName" class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="username" asp-for="UserName" placeholder="Skriv dit brugernavn her" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Kodeord</label>
+                        <label asp-for="Password" class="cols-sm-2 control-label">Kodeord</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="Skriv dit kodeord her" />
+                                <span asp-validation-for="Password" class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="password" asp-for="Password" placeholder="Skriv dit kodeord her" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="confirm" class="cols-sm-2 control-label">Gentag kodeord</label>
+                        <label asp-for="ConfirmPassword" class="cols-sm-2 control-label">Gentag kodeord</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Gentag dit kodeord her" />
+                                <span asp-validation-for="ConfirmPassword" class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="confirmpassword" asp-for="ConfirmPassword" placeholder="Gentag dit kodeord her" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group ">
-                        <button type="button" class="btn btn-primary btn-lg btn-block login-button">Opret bruger</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Opret bruger</button>
                     </div>
                 </form>
             </div>
