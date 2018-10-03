@@ -37,18 +37,23 @@ namespace WelfareDenmark.TrainingBuddy.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //services.AddDbContext<TrainingBuddyDataContext>(options =>
-            //{
-            //    var connectionString = "Server=myServerAddress;Database=myDataBase;Trusted_Connection=True;";
-            //    options.UseSqlServer(connectionString);
-            //});
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MyDataBase"),
                     optionsBuilders =>
                         optionsBuilders.MigrationsAssembly("WelfareDenmark.TrainingBuddy.Web")));
+
+
+
+            /*********  This is my connection string, so I can use mySql locally. DONT DELETE  *********/
+
+            //services.AddDbContext<IdentityDbContext>(options =>
+                //options.UseMySql(Configuration.GetConnectionString("MyDataBaseAlex"),
+                    //optionsBuilders =>
+                        //optionsBuilders.MigrationsAssembly("WelfareDenmark.TrainingBuddy.Web")));
+
+
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityDbContext>()

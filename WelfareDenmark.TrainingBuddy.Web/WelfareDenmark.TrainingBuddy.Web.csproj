@@ -13,6 +13,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,5 +23,9 @@
     <Folder Include="ViewComponents\" />
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\Components\FriendList\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\20181001072304_InitialCreate.cs" />
+    <Compile Remove="Migrations\20181003205751_Initial.cs" />
   </ItemGroup>
 </Project>
