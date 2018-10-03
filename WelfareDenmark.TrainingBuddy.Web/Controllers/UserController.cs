@@ -115,5 +115,11 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
             return RedirectToAction(nameof(FrontPageController.PageOne), "FrontPage");
         }
 
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
     }
 }
