@@ -17,11 +17,14 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
     public class UserController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
         public UserController(
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager, 
+            SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         //
@@ -35,7 +38,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        public async Task<IActionResult> CreateUser(User model)
+        public async Task<IActionResult> CreateUser(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -75,16 +78,41 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
-        public IActionResult Login(User model, string returnUrl = null)
+        public async Task<IActionResult> Login (LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe,
+                    lockoutOnFailure: false);
+
+                if (result.Succeeded)
+                {
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction(nameof(HomeController.Index), "Home");
+                    }
+                }
+                else
+                {
+                        ModelState.AddModelError(string.Empty, "Forkert log ind information");        
+                }
 
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
     }
