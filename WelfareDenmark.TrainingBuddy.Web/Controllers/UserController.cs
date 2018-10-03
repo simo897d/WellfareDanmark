@@ -45,7 +45,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
                 IdentityUser user = new IdentityUser()
                 {
                     Email = model.Email,
-                    UserName = model.UserName
+                    UserName = model.Email
                 };
 
                 var result = await _userManager.CreateAsync(user,
@@ -53,7 +53,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("PageOne", "FrontPage");
                 }
                 else
                 {
@@ -112,7 +112,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(FrontPageController.PageOne), "FrontPage");
         }
 
     }
