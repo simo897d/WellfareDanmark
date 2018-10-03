@@ -1,0 +1,13 @@
+﻿@model WelfareDenmark.TrainingBuddy.Web.Models.FriendListViewModel
+
+<div class="list-group">
+    <h1>Venneliste</h1>
+
+    @foreach (var user in Model.Users)
+    {
+        <button onclick="myFunction()" class="list-group-item dropbtn">@user.Name</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#">Ring op</a>
+        </div>
+    }
+</div>
