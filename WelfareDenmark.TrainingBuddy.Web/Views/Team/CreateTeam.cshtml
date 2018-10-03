@@ -3,15 +3,14 @@
     ViewData["Title"] = "CreateTeam";
 }
 
-<h2>CreateTeam</h2>
-
-
 <div class="row">
     <div class="col-md-3">
-        <div class="dual-list list-left"id="friendsList">
+        @* Invoke friend list *@
+        @await Component.InvokeAsync("FriendList")
+        @*<div class="dual-list list-left"id="friendsList">
             <div class="well text-right">
                 <div class="row">
-                    
+
             <a href="#" class="list-group-item list-group-item-action">Gerda Larsen</a>
             <a href="#" class="list-group-item">Karsten Olsen</a>
             <a href="#" class="list-group-item">Kim Nielsen</a>
@@ -19,7 +18,7 @@
             <a href="#" class="list-group-item">Hanne Holm</a>
                 </div>
         </div>
-            </div>
+            </div>*@
     </div>
     <div class="col-md-3">
 
