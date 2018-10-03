@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model WelfareDenmark.TrainingBuddy.Web.Models.User
+
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -32,7 +34,6 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Forside</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Log ind</a></li>
-                       
                 </ul>
             </div>
                 
@@ -43,11 +44,14 @@
         <div class="modal-dialog">
             <div class="loginmodal-container">
                 <h1>Log ind på din bruger</h1><br>
-                <form>
-                    <input type="text" name="user" placeholder="Brugernavn">
-                    <input type="password" name="pass" placeholder="kodeord">
+                @using (Html.BeginForm("Login","User",FormMethod.Post))
+                {
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { placeholder = "Brugernavn" } })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Kodeord" } })
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { placeholder = "Bekræft kodeord" } })
                     <input type="submit" name="login" class="login loginmodal-submit" value="Log ind">
-                </form>
+                }
+                
                 <ul class="Login-help">
                     <li><a asp-area="" asp-controller="User" asp-action="CreateUser">Registrer bruger</a></li>
                 </ul>
