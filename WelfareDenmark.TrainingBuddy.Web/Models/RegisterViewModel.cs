@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WelfareDenmark.TrainingBuddy.Web.Models
 {
-    public class User
+    public class RegisterViewModel
     {
         public long Id { get; set; }
         public string Name { get; set; }

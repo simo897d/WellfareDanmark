@@ -1,0 +1,40 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model WelfareDenmark.TrainingBuddy.Web.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    //Layout = "_ContentLayout";
+}
+
+<fieldset>
+
+    <form asp-controller="User" role="form" asp-action="Login" class="form-horizontal">
+        <div asp-validation-summary="All" class="input-validation-error"></div>
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="loginmodal-container">
+                    <h1>Log ind på din bruger</h1><br>
+
+
+                    <input type="email" asp-for="Email" placeholder="Email">
+                    <span asp-validation-for="Email" class="field-validation-error"></span>
+
+                    <input type="password" asp-for="Password" placeholder="kodeord">
+                    <span asp-validation-for="Password" class="field-validation-error"></span>
+
+                    <label asp-for="RememberMe" class="col-md-2 control-label"></label>
+                    <input type="checkbox" asp-for="RememberMe">
+                    <span asp-validation-for="RememberMe" class="field-validation-error"></span>
+
+                    <input type="submit" name="login" class="login loginmodal-submit" value="Log ind">
+
+                    <ul class="Login-help">
+                        <li><a asp-area="" asp-controller="User" asp-action="CreateUser">Registrer bruger</a></li>
+                    </ul>
+                    @*<div class="login-help">
+                        <a href="#">Registrer bruger</a> - <a href="#">Glemt kodeord</a>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </form>
+</fieldset>

@@ -18,7 +18,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
 
         public IActionResult CreateTeam()
         {
-            User testUser1 = new User
+            RegisterViewModel testUser1 = new RegisterViewModel()
             {
                 Name = "Gerda Jørgensen",
                 UserName = "SlutyBitch02",

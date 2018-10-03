@@ -1,24 +1,24 @@
-﻿@model WelfareDenmark.TrainingBuddy.Web.Models.User
-
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model WelfareDenmark.TrainingBuddy.Web.Models.LoginViewModel
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - WelfareDenmark.TrainingBuddy.Web</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WelfareDenmark.TrainingBuddy.Web</title>
 
-        <environment include="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-            <link rel="stylesheet" href="~/css/site.css" />
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        </environment>
-    </head>
-    <body>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -33,10 +33,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Forside</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Log ind</a></li>
+                   @*<li><a asp-area="" asp-controller="User" asp-action="Login">Log ind</a></li>*@
+                    <li><a href="Login.cshtml" data-toggle="modal" data-target="#login-modal">Log ind</a></li>
                 </ul>
             </div>
-                
+
         </div>
     </nav>
     @*Log in modal begin*@
@@ -44,55 +45,62 @@
         <div class="modal-dialog">
             <div class="loginmodal-container">
                 <h1>Log ind på din bruger</h1><br>
-                @using (Html.BeginForm("Login","User",FormMethod.Post))
-                {
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { placeholder = "Brugernavn" } })
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Kodeord" } })
-                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { placeholder = "Bekræft kodeord" } })
+                <form asp-controller="User" role="form" asp-action="Login" class="form-horizontal">
+                    <div asp-validation-summary="All" class="input-validation-error"></div>
+
+                    <input type="email" asp-for="Email" placeholder="Email">
+                    <span asp-validation-for="Email" class="field-validation-error"></span>
+
+                    <input type="password" asp-for="Password" placeholder="kodeord">
+                    <span asp-validation-for="Password" class="field-validation-error"></span>
+
+                    <label asp-for="RememberMe" class="col-md-2 control-label"></label>
+                    <input type="checkbox" asp-for="RememberMe">
+                    <span asp-validation-for="RememberMe" class="field-validation-error"></span>
+
                     <input type="submit" name="login" class="login loginmodal-submit" value="Log ind">
-                }
-                
+                </form>
                 <ul class="Login-help">
                     <li><a asp-area="" asp-controller="User" asp-action="CreateUser">Registrer bruger</a></li>
                 </ul>
                 @*<div class="login-help">
-            <a href="#">Registrer bruger</a> - <a href="#">Glemt kodeord</a>
-        </div>*@
+                        <a href="#">Registrer bruger</a> - <a href="#">Glemt kodeord</a>
+                    </div>*@
             </div>
         </div>
     </div>
     @*Log in modal end*@
-        <partial name="_CookieConsentPartial" />
+    <partial name="_CookieConsentPartial" />
 
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; 2018 - WelfareDenmark TrainingBuddy</p>
-            </footer>
-        </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2018 - WelfareDenmark TrainingBuddy</p>
+        </footer>
+    </div>
 
-        <environment include="Development">
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-        </environment>
-        <environment exclude="Development">
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery"
-                    crossorigin="anonymous"
-                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-            </script>
-            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                    crossorigin="anonymous"
-                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-            </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
-        </environment>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
 
-        @RenderSection("Scripts", required: false)
-    </body>
+    @RenderSection("Scripts", required: false)
+</body>
 </html>
