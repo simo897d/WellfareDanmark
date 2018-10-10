@@ -23,14 +23,20 @@
                         <div class="col-md-3">
                             <p>Gerdas holdtræning</p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             <p>Her er en beskrivelse af holdet og de øvelser, som skal laves.</p>
                         </div>
-                        <div class="col-md-3">
-                            <a href="#" class="list-group-item">Join</a>
+                        <div class="col-md-2">
+                            <a href="#" class="list-group-item">
+                                <span class="glyphicon glyphicon-record"></span>
+                                Deltag
+                            </a>
                         </div>
-                        <div class="col-md-3">
-                            <a href="#" class="list-group-item">Frameld</a>
+                        <div class="col-md-2">
+                            <a href="#" class="list-group-item">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Frameld
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -41,11 +47,14 @@
                         <div class="col-md-3">
                             <p>Karstens holdtræning</p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             <p>Her er en beskrivelse af holdet og de øvelser, som skal laves.</p>
                         </div>
-                        <div class="col-md-6">
-                            <a href="#" class="list-group-item">Tilmeld</a>
+                        <div class="col-md-4">
+                            <a href="#" class="list-group-item friendListJoinLink">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                Tilmeld
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -53,10 +62,14 @@
         </ul>
         <div class="row">
             <div class="col-md-6">
-                @Html.ActionLink("Opret hold", "CreateTeam", "Team", null, new { @class = "btn btn-default", @style = "width:100%;" })
+
+                <a href="@Url.Action("CreateTeam","Team")" class="btn btn-default" style="width: 100%;">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Opret hold
+                </a>
             </div>
             <div class="col-md-6">
-                <button type="button" style="width: 100%;" class="btn btn-default">Button</button>
+                <button type="button" style="width: 100%;" class="btn btn-default">Kontakt</button>
             </div>
         </div>
     </div>
