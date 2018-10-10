@@ -53,7 +53,16 @@ namespace WelfareDenmark.TrainingBuddy.Web
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("EmployeeOnly",
+                    policy =>
+                        policy.RequireClaim("IsEmployee"));
+            });
+            //For at bruge dette, skal der tilføjes "[Authorize(Policy = "EmployeeOnly")]" over view metoden.
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

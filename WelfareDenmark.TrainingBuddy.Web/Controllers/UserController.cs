@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WelfareDenmark.TrainingBuddy.Web.Models;
 
+
+
 namespace WelfareDenmark.TrainingBuddy.Web.Controllers
 {
     public class UserController : Controller
@@ -20,8 +22,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
 
         public UserController(
-            UserManager<IdentityUser> userManager, 
-            SignInManager<IdentityUser> signInManager)
+            UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -47,6 +48,16 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
                     Email = model.Email,
                     UserName = model.Email
                 };
+
+                //if (!string.IsNullOrEmpty(model.IsEmployee))
+                //{
+                //    user.Claims.Add(new IdentityUserClaim<string>
+                //    {
+                //        ClaimType = "IsEmployee",
+                //        ClaimValue = model.IsEmployee
+                //    });
+
+                //}
 
                 var result = await _userManager.CreateAsync(user,
                     model.Password);
