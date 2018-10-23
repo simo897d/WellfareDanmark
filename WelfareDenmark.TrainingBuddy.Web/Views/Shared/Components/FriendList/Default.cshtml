@@ -3,10 +3,10 @@
 <h1>Venneliste</h1>
 
 <ul class="list-group">
-    @foreach (var user in Model.Users)
+    @foreach (var friend in Model.Friends)
     {
         <li href="#" class="list-group-item">
-            @user.Name
+            @friend.Name
 
             <a href="@Url.Action("CallFriend", "User")">
                 <span class="glyphicon glyphicon-earphone friendListGlyphCall"></span>
