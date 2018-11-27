@@ -2,32 +2,61 @@
 @{
     ViewData["Title"] = "CreateTeam";
 }
-
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="~/js/Team.js"></script>
+</head>
 <div class="row">
     <div class="col-md-3">
         @* Invoke friend list *@
         @await Component.InvokeAsync("FriendList")
         @*<div class="dual-list list-left"id="friendsList">
-            <div class="well text-right">
-                <div class="row">
+                <div class="well text-right">
+                    <div class="row">
 
-            <a href="#" class="list-group-item list-group-item-action">Gerda Larsen</a>
-            <a href="#" class="list-group-item">Karsten Olsen</a>
-            <a href="#" class="list-group-item">Kim Nielsen</a>
-            <a href="#" class="list-group-item">Morten Pedersen</a>
-            <a href="#" class="list-group-item">Hanne Holm</a>
-                </div>
-        </div>
-            </div>*@
+                <a href="#" class="list-group-item list-group-item-action">Gerda Larsen</a>
+                <a href="#" class="list-group-item">Karsten Olsen</a>
+                <a href="#" class="list-group-item">Kim Nielsen</a>
+                <a href="#" class="list-group-item">Morten Pedersen</a>
+                <a href="#" class="list-group-item">Hanne Holm</a>
+                    </div>
+            </div>
+                </div>*@
+
     </div>
-    <div class="col-md-3">
+    <div class="approveTermsContainer">
+        <div class="newItems">
+            <b>Venneliste:</b><br />
+            <select multiple="multiple" id="lstBox1">
+                <option value="ajax">Ajax</option>
+                <option value="jquery">jQuery</option>
+                <option value="javascript">JavaScript</option>
+                <option value="mootool">MooTools</option>
+                <option value="prototype">Prototype</option>
+                <option value="dojo">Dojo</option>
+            </select>
+        </div>
+        <div class="transferBtns">
+            <input type='button' id='btnRight' value='  >  ' />
+            <br /><input type='button' id='btnLeft' value='  <  ' />
+            <div class="submitContainer">
+                <input type="submit" />
+            </div>
+        </div>
+        <div class="approvedItems">
+            <b>Items to Approve: </b><br />
+            <select multiple="multiple" id="lstBox2"></select>
+        </div>
+    </div>
+
+    @*<div class="col-md-3">
 
         <div class="list-group" id="participantsList">
             <header>Valgte Deltagere</header>
             <div class="list-group-item" data="friendsList">
             </div>
         </div>
-    </div>
+    </div>*@
     <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Øvelses Sæt<span class="caret"></span>
