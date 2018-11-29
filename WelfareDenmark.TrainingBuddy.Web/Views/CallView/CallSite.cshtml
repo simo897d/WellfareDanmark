@@ -3,7 +3,24 @@
     ViewData["Title"] = "CallSite";
 }
 
-<h2>CallView</h2>
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="~/css/video.css" />
+    <body>
+        <h1>
+            Video chat
+        </h1>
+        <video id="localVideo" autoplay playsinline></video>
+        <video id="remoteVideo" autoplay playsinline></video>
+
+        <button id="hangupButton">Hang Up</button>
+
+        <script src="~/js/VideoChatService.js"></script>
+        <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    </body>
+</html>
+
+@*<h2>CallView</h2>
 
 <!DOCTYPE html>
 <html>
@@ -52,4 +69,4 @@
                 console.log("Something went wrong!");
             });
     }
-</script>
+</script>*@
