@@ -5,68 +5,73 @@
 
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" href="~/css/video.css" />
-    <body>
-        <h1>
-            Video chat
-        </h1>
-        <video id="localVideo" autoplay playsinline></video>
-        <video id="remoteVideo" autoplay playsinline></video>
+<link rel="stylesheet" href="~/css/video.css" />
+<body>
+    <h1>
+        Video chat
+    </h1>
+<textarea id="dataChannelSend" disabled
+          placeholder="Press Start, enter some text, then press Send."></textarea>
+<textarea id="dataChannelReceive" disabled></textarea>
 
-        <button id="hangupButton">Hang Up</button>
+    <div id="buttons">
+        <button id="startButton">Start</button>
+        <button id="sendButton">Send</button>
+        <button id="closeButton">Stop</button>
+    </div>
 
-        <script src="~/js/VideoChatService.js"></script>
-        <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    </body>
+    <script src="~/js/VideoChatService.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+</body>
 </html>
 
 @*<h2>CallView</h2>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta content="stuff, to, help, search, engines, not" name="keywords">
-    <meta content="What this page is about." name="description">
-    <meta content="Display Webcam Stream" name="title">
-    <title>Display Webcam Stream</title>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="stuff, to, help, search, engines, not" name="keywords">
+        <meta content="What this page is about." name="description">
+        <meta content="Display Webcam Stream" name="title">
+        <title>Display Webcam Stream</title>
 
-    <style>
-        #container {
-            margin: 0px auto;
-            width: 500px;
-            height: 375px;
-            border: 10px #333 solid;
-        }
+        <style>
+            #container {
+                margin: 0px auto;
+                width: 500px;
+                height: 375px;
+                border: 10px #333 solid;
+            }
 
-        #videoElement {
-            width: 500px;
-            height: 375px;
-            background-color: #666;
-        }
-    </style>
-</head>
+            #videoElement {
+                width: 500px;
+                height: 375px;
+                background-color: #666;
+            }
+        </style>
+    </head>
 
-<body>
-    <div id="container">
-        <video autoplay id="videoElement"></video>
-    </div>
+    <body>
+        <div id="container">
+            <video autoplay id="videoElement"></video>
+        </div>
+        <script>
+
+        </script>
+    </body>
+    </html>
+
     <script>
+        var video = document.querySelector("#videoElement");
 
-    </script>
-</body>
-</html>
-
-<script>
-    var video = document.querySelector("#videoElement");
-
-    if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-                video.srcObject = stream;
-            })
-            .catch(function (err0r) {
-                console.log("Something went wrong!");
-            });
-    }
-</script>*@
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    video.srcObject = stream;
+                })
+                .catch(function (err0r) {
+                    console.log("Something went wrong!");
+                });
+        }
+    </script>*@
