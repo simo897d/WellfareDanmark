@@ -20,8 +20,9 @@
     <Content Update="Views\FrontPage\PageOne.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Folder Include="ViewComponents\" />
-    <Folder Include="Views\Shared\Components\" />
+    <Content Update="Views\Shared\Components\TeamList\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Folder Include="Views\Shared\Components\FriendList\" />
   </ItemGroup>
   <ItemGroup>
