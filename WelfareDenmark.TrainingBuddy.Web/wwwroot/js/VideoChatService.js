@@ -5,6 +5,12 @@ var isInitiator;
 window.room = prompt("Enter room name:");
 
 var socket = io.connect();
+var app = require('express')();
+var http = require('http').Server(app);
+
+http.listen(3000, function () {
+    console.log('listening on *:3000')
+});
 
 if (room !== "") {
     console.log("Message from client: Asking to join room" + room);
