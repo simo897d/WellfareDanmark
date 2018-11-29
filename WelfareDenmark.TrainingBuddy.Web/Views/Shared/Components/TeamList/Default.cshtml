@@ -1,0 +1,10 @@
+﻿@model WelfareDenmark.TrainingBuddy.Web.Models.FriendListViewModel
+
+    @foreach (var friend in Model.Friends)
+    {
+            <option value="@friend.Id">@friend.Name</option>
+    }
+
+
+
+
