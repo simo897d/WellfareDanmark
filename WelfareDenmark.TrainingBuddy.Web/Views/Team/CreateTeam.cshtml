@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-3">
         @* Invoke friend list *@
-        @await Component.InvokeAsync("FriendList")
+        @*@await Component.InvokeAsync("FriendList")*@
         @*<div class="dual-list list-left"id="friendsList">
                 <div class="well text-right">
                     <div class="row">
@@ -28,12 +28,7 @@
         <div class="newItems">
             <b>Venneliste:</b><br />
             <select multiple="multiple" id="lstBox1">
-                <option value="ajax">Ajax</option>
-                <option value="jquery">jQuery</option>
-                <option value="javascript">JavaScript</option>
-                <option value="mootool">MooTools</option>
-                <option value="prototype">Prototype</option>
-                <option value="dojo">Dojo</option>
+                @Component.InvokeAsync("TeamList")
             </select>
         </div>
         <div class="transferBtns">
