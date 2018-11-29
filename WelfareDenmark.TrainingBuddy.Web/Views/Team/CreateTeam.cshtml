@@ -28,7 +28,7 @@
         <div class="newItems">
             <b>Venneliste:</b><br />
             <select multiple="multiple" id="lstBox1">
-                @Component.InvokeAsync("TeamList")
+                @await Component.InvokeAsync("TeamList")
             </select>
         </div>
         <div class="transferBtns">
