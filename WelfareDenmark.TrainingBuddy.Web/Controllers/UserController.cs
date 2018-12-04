@@ -29,7 +29,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
         }
 
         //
-        // GET: /Account/Register
+        // GET: /User/Register
         [HttpGet]
         public IActionResult CreateUser()
         {
@@ -37,7 +37,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
         }
 
         //
-        // POST: /Account/Register
+        // POST: /User/Register
         [HttpPost]
         public async Task<IActionResult> CreateUser(RegisterViewModel model)
         {
@@ -80,14 +80,14 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
             return View(model);
         }
         //
-        // GET: /Account/Login
+        // GET: /User/Login
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
         //
-        // POST: /Account/Login
+        // POST: /User/Login
         [HttpPost]
         public async Task<IActionResult> Login (LoginViewModel model, string returnUrl = null)
         {
