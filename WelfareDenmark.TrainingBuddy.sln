@@ -1,7 +1,10 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WelfareDenmark.TrainingBuddy.Web", "WelfareDenmark.TrainingBuddy.Web\WelfareDenmark.TrainingBuddy.Web.csproj", "{9B3D65E4-D359-4F7A-A803-D2C33E7BADCB}"
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WelfareDenmark.TrainingBuddy.Web", "WelfareDenmark.TrainingBuddy.Web\WelfareDenmark.TrainingBuddy.Web.csproj", "{9B3D65E4-D359-4F7A-A803-D2C33E7BADCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamAPI", "TeamAPI\TeamAPI.csproj", "{128AD561-13EA-4740-BA0B-69E42A34239B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +16,15 @@ Global
 		{9B3D65E4-D359-4F7A-A803-D2C33E7BADCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B3D65E4-D359-4F7A-A803-D2C33E7BADCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B3D65E4-D359-4F7A-A803-D2C33E7BADCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{128AD561-13EA-4740-BA0B-69E42A34239B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{128AD561-13EA-4740-BA0B-69E42A34239B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{128AD561-13EA-4740-BA0B-69E42A34239B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{128AD561-13EA-4740-BA0B-69E42A34239B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09F8ED8B-42C7-489B-8E0D-7596F6060572}
 	EndGlobalSection
 EndGlobal
