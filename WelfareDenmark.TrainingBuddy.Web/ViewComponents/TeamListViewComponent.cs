@@ -8,13 +8,13 @@ using WelfareDenmark.TrainingBuddy.Web.Models;
 
 namespace WelfareDenmark.TrainingBuddy.Web.ViewComponents
 {
-    public class FriendListViewComponent : ViewComponent
+    public class TeamListViewComponent : ViewComponent
     {
         private TrainingBuddyDataContext _db { get; set; }
         private readonly UserManager<IdentityUser> _userManager;
         private IdentityDbContext _identityDb { get; set; }
 
-        public FriendListViewComponent(TrainingBuddyDataContext db, UserManager<IdentityUser> userManager, IdentityDbContext identityDb)
+        public TeamListViewComponent(TrainingBuddyDataContext db, UserManager<IdentityUser> userManager, IdentityDbContext identityDb)
         {
             _db = db;
             _userManager = userManager;
@@ -32,7 +32,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.ViewComponents
             //    friends.Add(friend);
             //}
 
-            FriendListViewModel friendListViewModel = new FriendListViewModel
+            FriendListViewModel teamListViewModel = new FriendListViewModel
             {
                 //Friends = friends
                 Friends = new List<User>
@@ -46,7 +46,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.ViewComponents
             };
 
 
-            return View(friendListViewModel);
+            return View(teamListViewModel);
         }
     }
 }

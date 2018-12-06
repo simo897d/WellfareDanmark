@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WelfareDenmark.TrainingBuddy.Web.Models;
 
+
+
 namespace WelfareDenmark.TrainingBuddy.Web.Controllers
 {
     public class UserController : Controller
@@ -20,15 +22,14 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
 
         public UserController(
-            UserManager<IdentityUser> userManager, 
-            SignInManager<IdentityUser> signInManager)
+            UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
 
         //
-        // GET: /Account/Register
+        // GET: /User/Register
         [HttpGet]
         public IActionResult CreateUser()
         {
@@ -36,7 +37,7 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
         }
 
         //
-        // POST: /Account/Register
+        // POST: /User/Register
         [HttpPost]
         public async Task<IActionResult> CreateUser(RegisterViewModel model)
         {
@@ -47,6 +48,16 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
                     Email = model.Email,
                     UserName = model.Email
                 };
+
+                //if (!string.IsNullOrEmpty(model.IsEmployee))
+                //{
+                //    user.Claims.Add(new IdentityUserClaim<string>
+                //    {
+                //        ClaimType = "IsEmployee",
+                //        ClaimValue = model.IsEmployee
+                //    });
+
+                //}
 
                 var result = await _userManager.CreateAsync(user,
                     model.Password);
@@ -69,14 +80,14 @@ namespace WelfareDenmark.TrainingBuddy.Web.Controllers
             return View(model);
         }
         //
-        // GET: /Account/Login
+        // GET: /User/Login
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
         //
-        // POST: /Account/Login
+        // POST: /User/Login
         [HttpPost]
         public async Task<IActionResult> Login (LoginViewModel model, string returnUrl = null)
         {

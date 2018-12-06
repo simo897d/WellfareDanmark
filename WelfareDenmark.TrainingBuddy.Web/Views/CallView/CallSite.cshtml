@@ -3,54 +3,79 @@
     ViewData["Title"] = "CallSite";
 }
 
-<h2>CallView</h2>
-
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta content="stuff, to, help, search, engines, not" name="keywords">
-    <meta content="What this page is about." name="description">
-    <meta content="Display Webcam Stream" name="title">
-    <title>Display Webcam Stream</title>
-
-    <style>
-        #container {
-            margin: 0px auto;
-            width: 500px;
-            height: 375px;
-            border: 10px #333 solid;
-        }
-
-        #videoElement {
-            width: 500px;
-            height: 375px;
-            background-color: #666;
-        }
-    </style>
-</head>
-
+<link rel="stylesheet" href="~/css/video.css" />
 <body>
-    <div id="container">
-        <video autoplay id="videoElement"></video>
-    </div>
-    <iframe  id="youtubeVid" width="560" height="315" src="https://www.youtube.com/embed/oHg5SJYRHA0?autoplay=1&controls=1&mute=1" frameborder="0" autoplay></iframe>
-    <script>
+    <h1>
+        Video chat
+    </h1>
+<textarea id="dataChannelSend" disabled
+          placeholder="Press Start, enter some text, then press Send."></textarea>
+<textarea id="dataChannelReceive" disabled></textarea>
 
-    </script>
+    <div id="buttons">
+        <button id="startButton">Start</button>
+        <button id="sendButton">Send</button>
+        <button id="closeButton">Stop</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="~/js/VideoChatService.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+    @*<script src="~/js/VideoChatService.js"></script>
+    *@
 </body>
 </html>
 
-<script>
-    var video = document.querySelector("#videoElement");
+@*<h2>CallView</h2>
 
-    if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-                video.srcObject = stream;
-            })
-            .catch(function (err0r) {
-                console.log("Something went wrong!");
-            });
-    }
-</script>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="stuff, to, help, search, engines, not" name="keywords">
+        <meta content="What this page is about." name="description">
+        <meta content="Display Webcam Stream" name="title">
+        <title>Display Webcam Stream</title>
+
+        <style>
+            #container {
+                margin: 0px auto;
+                width: 500px;
+                height: 375px;
+                border: 10px #333 solid;
+            }
+
+            #videoElement {
+                width: 500px;
+                height: 375px;
+                background-color: #666;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="container">
+            <video autoplay id="videoElement"></video>
+        </div>
+        <script>
+
+        </script>
+    </body>
+    </html>
+
+    <script>
+        var video = document.querySelector("#videoElement");
+
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    video.srcObject = stream;
+                })
+                .catch(function (err0r) {
+                    console.log("Something went wrong!");
+                });
+        }
+    </script>*@

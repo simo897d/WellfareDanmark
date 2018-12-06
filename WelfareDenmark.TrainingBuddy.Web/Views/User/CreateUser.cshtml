@@ -35,25 +35,25 @@
                 <form asp-controller="User" asp-action="CreateUser" class="form-horizontal" method="post">
                     <div asp-validation-summary="All" class="text-danger"></div>
                     @*<div class="form-group">
-                        <label for="usertype" class="cols-sm-2 control-label">Bruger type</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Vælg<span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Patient</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Kiropraktor</a></li>
-                                        <li><a href="#">Personlig træner</a></li>
-                                        <li><a href="#">osv....</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
+            <label for="usertype" class="cols-sm-2 control-label">Bruger type</label>
+            <div class="cols-sm-10">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Vælg<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Patient</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Kiropraktor</a></li>
+                            <li><a href="#">Personlig træner</a></li>
+                            <li><a href="#">osv....</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>*@
                     <div class="form-group">
                         <label asp-for="Name" class="cols-sm-2 control-label">Fornavn og efternavn</label>
                         <div class="cols-sm-10">
@@ -96,6 +96,15 @@
                             <div class="input-group">
                                 <span asp-validation-for="ConfirmPassword" class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                                 <input type="password" class="form-control" name="confirmpassword" asp-for="ConfirmPassword" placeholder="Gentag dit kodeord her" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IsEmployee" class="cols-sm-2 control-label"></label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span asp-validation-for="IsEmployee" class="text-danger"></span>
+                                <input type="checkbox" class="form-control" asp-for="IsEmployee"/>
                             </div>
                         </div>
                     </div>
