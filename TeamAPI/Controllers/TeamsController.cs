@@ -21,7 +21,7 @@ namespace TeamAPI.Controllers
         }
 
         // GET: api/Teams
-        [HttpGet]
+        [HttpGet()]
         public IEnumerable<Teams> GetTeams()
         {
             return _context.Teams;

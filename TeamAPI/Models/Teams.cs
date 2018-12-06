@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace TeamAPI.Models
 {
-    public class Teams
-    {
+    public class Teams {
+        public Teams() {
+            Participants = new List<Users>();
+            Exercises = new List<Exercise>();
+        }
         [Key]
         public int TeamsID { get; set; }
         public List<Users> Participants { get; set; }
         public DateTime Date { get; set; }
         public List<Exercise> Exercises { get; set; }
+
+        public static implicit operator DbSet<object>(Teams v) {
+            throw new NotImplementedException();
+        }
     }
 }
