@@ -1,5 +1,5 @@
 ﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
-@model WelfareDenmark.TrainingBuddy.Web.Models.LoginViewModel
+@*@model WelfareDenmark.TrainingBuddy.Web.Models.LoginViewModel*@
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
 
@@ -23,86 +23,91 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WelfareDenmark TrainingBuddy</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="FrontPage" asp-action="PageOne" class="navbar-brand">WelfareDenmark TrainingBuddy</a>
+            }
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WelfareDenmark TrainingBuddy</a>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Hjem</a></li>
                 }
                 else
                 {
-                    <a asp-area="" asp-controller="FrontPage" asp-action="PageOne" class="navbar-brand">WelfareDenmark TrainingBuddy</a>
+                    <li><a href="Login.cshtml" data-toggle="modal" data-target="#login-modal">Hjem</a></li>
                 }
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <li>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Hjem</a></li>
+                        <form id="logout" asp-controller="User" role="form" asp-action="Logout">
+                            <input type="submit" value="Log ud" class="" />
+                        </form>
+
+
                     }
                     else
                     {
-                        <li><a href="Login.cshtml" data-toggle="modal" data-target="#login-modal">Hjem</a></li>
-                    }
-                    <li>
-                        @if (SignInManager.IsSignedIn(User))
-                        {
-                            <form id="logout" asp-controller="User" role="form" asp-action="Logout">
-                                <input type="submit" value="Log ud" class="" />
-                            </form>
-
-
-                        }
-                        else
-                        {
 
                             @*<li><a asp-area="" asp-controller="User" asp-action="Login">Log ind</a></li>*@
                         <a href="Login.cshtml" data-toggle="modal" data-target="#login-modal">Log ind</a>
-                        }
-                    </li>
+                    }
+                </li>
 
-                </ul>
-            </div>
-
+            </ul>
         </div>
-    </nav>
-    @*Log in modal begin*@
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="loginmodal-container">
-                <h1>Log ind på din bruger</h1><br>
-                <form asp-controller="User" role="form" asp-action="Login" class="form-horizontal">
-                    <div asp-validation-summary="All" class="input-validation-error"></div>
 
-                    <input type="email" asp-for="Email" placeholder="Email">
-                    <span asp-validation-for="Email" class="field-validation-error"></span>
+    </div>
+</nav>
 
-                    <input type="password" asp-for="Password" placeholder="kodeord">
-                    <span asp-validation-for="Password" class="field-validation-error"></span>
+@*Log in modal begin*@
+@*
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>Log ind på din bruger</h1><br>
+            <form asp-controller="User" role="form" asp-action="Login" class="form-horizontal">
+                <div asp-validation-summary="All" class="input-validation-error"></div>
 
-                    <label asp-for="RememberMe" class="col-md-2 control-label"></label>
-                    <input type="checkbox" asp-for="RememberMe">
-                    <span asp-validation-for="RememberMe" class="field-validation-error"></span>
+                <input type="email" asp-for="Email" placeholder="Email">
+                <span asp-validation-for="Email" class="field-validation-error"></span>
 
-                    <input type="submit" name="login" class="login loginmodal-submit" value="Log ind">
-                </form>
-                <ul class="Login-help">
-                    <li><a asp-area="" asp-controller="User" asp-action="CreateUser">Registrer bruger</a></li>
-                </ul>
-                @*<div class="login-help">
+                <input type="password" asp-for="Password" placeholder="kodeord">
+                <span asp-validation-for="Password" class="field-validation-error"></span>
+
+                <label asp-for="RememberMe" class="col-md-2 control-label"></label>
+                <input type="checkbox" asp-for="RememberMe">
+                <span asp-validation-for="RememberMe" class="field-validation-error"></span>
+
+                <input type="submit" name="login" class="login loginmodal-submit" value="Log ind">
+            </form>
+            <ul class="Login-help">
+                <li><a asp-area="" asp-controller="User" asp-action="CreateUser">Registrer bruger</a></li>
+            </ul>
+            @*<div class="login-help">
                         <a href="#">Registrer bruger</a> - <a href="#">Glemt kodeord</a>
                     </div>*@
-            </div>
+@*
         </div>
     </div>
-    @*Log in modal end*@
+</div>
+*@
+@*Log in modal end*@
+
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">

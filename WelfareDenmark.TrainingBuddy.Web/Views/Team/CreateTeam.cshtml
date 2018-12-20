@@ -1,28 +1,19 @@
 ﻿
+@model WelfareDenmark.TrainingBuddy.Web.Models.TeamViewModel
 @{
     ViewData["Title"] = "CreateTeam";
+
 }
 <head>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="~/js/Team.js"></script>
     <link rel="stylesheet" type="text/css" href="~/css/Team.css">
+
 </head>
 <div class="row">
     <div class="col-md-3">
         @* Invoke friend list *@
         @*@await Component.InvokeAsync("FriendList")*@
-        @*<div class="dual-list list-left"id="friendsList">
-                <div class="well text-right">
-                    <div class="row">
-
-                <a href="#" class="list-group-item list-group-item-action">Gerda Larsen</a>
-                <a href="#" class="list-group-item">Karsten Olsen</a>
-                <a href="#" class="list-group-item">Kim Nielsen</a>
-                <a href="#" class="list-group-item">Morten Pedersen</a>
-                <a href="#" class="list-group-item">Hanne Holm</a>
-                    </div>
-            </div>
-                </div>*@
 
     </div>
     <div class="approveTermsContainer">
@@ -45,46 +36,34 @@
         </div>
     </div>
 
-    @*<div class="col-md-3">
-
-        <div class="list-group" id="participantsList">
-            <header>Valgte Deltagere</header>
-            <div class="list-group-item" data="friendsList">
-            </div>
-        </div>
-    </div>*@
-    <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Øvelses Sæt<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a href="#">Sæt 1</a></li>
-            <li><a href="#">Sæt 2</a></li>
-            <li><a href="#">Lav dit eget...</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-        </ul>
-    </div>
-    <div class="btn-group">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Dato</a>
-            <a class="dropdown-item" href="#">En anden dato</a>
-            <a class="dropdown-item" href="#">Hvorfor ikke bare den her dato istedet?</a>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreateTeam">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="TeamId" class="control-label"></label>
+                    <input asp-for="TeamId" class="form-control" />
+                    <span asp-validation-for="TeamId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserId" class="control-label"></label>
+                    <select asp-for="UserId" multiple class="form-control" asp-items="ViewBag.UserId" id="lstBox1"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ExerciseId" class="control-label"></label>
+                    <select asp-for="ExerciseId" class="form-control" asp-items="ViewBag.ExerciseId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Date" class="control-label"></label>
+                    <input asp-for="Date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="CreateTeam" class="btn btn-default" />
+                </div>
+            </form>
         </div>
     </div>
 
 </div>
-<div class="row">
-    <div class="col-md-10">
-
-    </div>
-    <div class="btn-group">
-        <button class="btn btn-primary btn-lg btn-link btn-block" type="button" id="btnCreateTeam" >
-
-        Opret Hold
-        </button>
-    </div>
-</div>
+    

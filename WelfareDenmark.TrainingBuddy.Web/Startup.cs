@@ -44,12 +44,17 @@ namespace WelfareDenmark.TrainingBuddy.Web
                     optionsBuilders =>
                         optionsBuilders.MigrationsAssembly("WelfareDenmark.TrainingBuddy.Web")));
 
+            services.AddDbContext<MyDataBaseContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MyDataBase"),
+                    optionsBuilders =>
+                        optionsBuilders.MigrationsAssembly("WelfareDenmark.TrainingBuddy.Web")));
+
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MyDataBase"),
                     optionsBuilders =>
                         optionsBuilders.MigrationsAssembly("WelfareDenmark.TrainingBuddy.Web")));
 
-
+            
 
             /*********  This is my connection string, so I can use mySql locally. DONT DELETE  *********/
 
@@ -59,9 +64,9 @@ namespace WelfareDenmark.TrainingBuddy.Web
             //            optionsBuilders.MigrationsAssembly("WelfareDenmark.TrainingBuddy.Web")));
 
             //services.AddDbContext<IdentityDbContext>(options =>
-                //options.UseMySql(Configuration.GetConnectionString("MyDataBaseAlex"),
-                    //optionsBuilders =>
-                        //optionsBuilders.MigrationsAssembly("WelfareDenmark.TrainingBuddy.Web")));
+            //options.UseMySql(Configuration.GetConnectionString("MyDataBaseAlex"),
+            //optionsBuilders =>
+            //optionsBuilders.MigrationsAssembly("WelfareDenmark.TrainingBuddy.Web")));
 
 
 

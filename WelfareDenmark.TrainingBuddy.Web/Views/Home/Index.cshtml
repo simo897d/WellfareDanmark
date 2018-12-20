@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<WelfareDenmark.TrainingBuddy.Web.Models.TeamTable>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 <h1>Velkommen @User.Identity.Name</h1>
@@ -7,71 +9,72 @@
 
         @* Invoke friend list *@
         @await Component.InvokeAsync("FriendList")
-       
+
         <div class="row">
             <div class="col-md-12">
                 <button type="button" style="width:100%;" class="btn btn-default">Tilføj ven</button>
             </div>
         </div>
     </div>
-    <div class="col-md-9">
-        <h1>Kommende holdtræninger</h1>
-        <ul class="list-group">
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="list-group">
-                        <div class="col-md-3">
-                            <p>Gerdas holdtræning</p>
-                        </div>
-                        <div class="col-md-5">
-                            <p>Her er en beskrivelse af holdet og de øvelser, som skal laves.</p>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="#" class="list-group-item">
-                                <span class="glyphicon glyphicon-record"></span>
-                                Deltag
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="#" class="list-group-item">
-                                <span class="glyphicon glyphicon-remove"></span>
-                                Frameld
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="list-group">
-                        <div class="col-md-3">
-                            <p>Karstens holdtræning</p>
-                        </div>
-                        <div class="col-md-5">
-                            <p>Her er en beskrivelse af holdet og de øvelser, som skal laves.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="#" class="list-group-item friendListJoinLink">
-                                <span class="glyphicon glyphicon-ok"></span>
-                                Tilmeld
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <div class="row">
-            <div class="col-md-6">
+    
 
-                <a href="@Url.Action("CreateTeam","Team")" class="btn btn-default" style="width: 100%;">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Opret hold
-                </a>
-            </div>
-            <div class="col-md-6">
-                <button type="button" style="width: 100%;" class="btn btn-default">Kontakt</button>
+
+    
+        <div class="col-md-9">
+            <h1>Kommende holdtræninger</h1>
+            <ul class="list-group">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Exercise)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.User)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Exercise.ExerciseName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.Email)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.TeamId">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.TeamId">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.TeamId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                
+            </ul>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <a href="@Url.Action("CreateTeam","Team")" class="btn btn-default" style="width: 100%;">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Opret hold
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" style="width: 100%;" class="btn btn-default">Kontakt</button>
+                </div>
             </div>
         </div>
-    </div>
 
 </div>
